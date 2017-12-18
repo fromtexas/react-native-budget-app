@@ -1,11 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Platform, StatusBar } from 'react-native';
+import {TabNavigator, StackNavigator} from 'react-navigation';
+import MonthList from './screens/MonthList';
+import Chart from './screens/Chart';
+import Month from './screens/Month';
+
+
 
 export default class App extends React.Component {
+
   render() {
+    const MainNavigator = TabNavigator({
+      monthlist: { screen: MonthList },
+      chart: {screen: Chart},
+      month: {
+        screen: StackNavigator({
+          month: {screen: Month}
+        })
+      }
+    },{
+      tabBarPosition: 'bottom',
+      lazy: true,
+    });
     return (
+
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
+        <MainNavigator/>
       </View>
     );
   }
@@ -14,8 +34,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
   },
 });
