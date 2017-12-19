@@ -1,24 +1,42 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import { Text, ScrollView, View, Button } from 'react-native';
+import NewMonthForm from '../components/NewMonthForm';
 
 class MonthList extends Component {
     static navigationOptions = {
         tabBarLabel: 'Home',
     }
+    state = {
+        newDate: ''
+    }
+    renderList = () => {
+       return this.props.monthes.map((item, id) => <View key={id}>{item.date}</View>);
+    }
+    onButtonPress = () => {
+
+    }
+    getNewDate = (date) => {
+        this.setState({newDate: date});
+    }
     render () {
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}>
                 <Text style={styles.item}>
-                    i am monthList component!
+                    {this.state.newDate}
                 </Text>
-            </View>
+                <NewMonthForm getNewDate={this.getNewDate}/>
+                <Button onPress={this.onButtonPress} title='Add New Month'/>
+                {this.renderList()}
+            </ScrollView>
         )
     }
 }
 
 const styles = {
     container: {
-        flex: 1
+        flex: 1,
+        padding: 10
     },
     item: {
         padding: 20,
@@ -26,4 +44,8 @@ const styles = {
     }
 };
 
-export default MonthList;
+const mapStateToProps = ({monthes}) => ({
+    monthes
+});
+
+export default connect(mapStateToProps)(MonthList);

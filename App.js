@@ -1,9 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View, Platform, StatusBar } from 'react-native';
+import {Provider} from 'react-redux';
 import {TabNavigator, StackNavigator} from 'react-navigation';
+import store from './store';
 import MonthList from './screens/MonthList';
 import Chart from './screens/Chart';
 import Month from './screens/Month';
+import Form from './screens/Form';
 
 
 
@@ -13,20 +16,18 @@ export default class App extends React.Component {
     const MainNavigator = TabNavigator({
       monthlist: { screen: MonthList },
       chart: {screen: Chart},
-      month: {
-        screen: StackNavigator({
-          month: {screen: Month}
-        })
-      }
+      form: {screen: Form},
+      month: {screen: Month}
     },{
       tabBarPosition: 'bottom',
       lazy: true,
     });
     return (
-
-      <View style={styles.container}>
-        <MainNavigator/>
-      </View>
+      <Provider store={store}>
+        <View style={styles.container}>
+          <MainNavigator/>
+        </View>
+      </Provider>
     );
   }
 }
