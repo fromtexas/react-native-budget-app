@@ -1,16 +1,41 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import { Text, View, TextInput, Switch, Button } from 'react-native';
+import uuid from 'uuid/v1';
+import {addNewLineinMonthBudget} from '../actions/monthActions';
 
 class Form extends Component {
     state = {
         text: '',
         $: '',
-        or: true
+        or: true,
+        warning: ''
     }
     onButtonPress = () => {
-        console.log('h');
-        
+        if(!this.state.text || !this.state.$){
+            return this.setState({warning: 'Both fields are requered!'})
+        }
+        const payload = {
+            id: uuid(),
+            text: this.state.text,
+            $: this.state.$,
+            or: this.state.or
+        };
+        const id = this.props.navigation.state.params.item.id;
+        this.props.dispatch(addNewLineinMonthBudget(id, payload));
+        this.setState({
+            text: '',
+            $: ''
+        });
+    }
+    isNumber = ($) => {
+
+        if(isNaN($)){
+            return this.setState({warning: 'This input accept only numbers!'});
+        }
+        this.setState({
+            $
+        });
     }
     render () {
         return (
@@ -22,9 +47,9 @@ class Form extends Component {
                     value={this.state.text}
                 />
                 <TextInput
-                    placeholder='Prise in numbers'
+                    placeholder={this.state.warning || 'Numbers'}
                     style={styles.input}
-                    onChangeText={($) => this.setState({$})}
+                    onChangeText={this.isNumber}
                     value={this.state.$}
                 />
                 <Switch
@@ -48,4 +73,4 @@ const styles = {
     }
 }
 
-export default Form;
+export default connect()(Form);

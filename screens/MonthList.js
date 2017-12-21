@@ -2,31 +2,44 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, ScrollView, View, Button } from 'react-native';
 import NewMonthForm from '../components/NewMonthForm';
+import {addMonth, removeMonth} from '../actions/monthActions';
 
 class MonthList extends Component {
     static navigationOptions = {
         tabBarLabel: 'Home',
     }
-    state = {
-        newDate: ''
-    }
-    renderList = () => {
-       return this.props.monthes.map((item, id) => <View key={id}>{item.date}</View>);
-    }
-    onButtonPress = () => {
 
+    onButtonPress = (item) => {
+        if(item.budget.length){
+            return () => this.props.navigation.navigate('month', {item});
+        }
+        return () => this.props.navigation.navigate('form', {item});
     }
-    getNewDate = (date) => {
-        this.setState({newDate: date});
+
+    removeMonth = (id) => {
+        return () => {
+            this.props.removeMonth(id);
+        };
     }
+    
+    renderList = () => {
+       return this.props.monthes.map(item => {
+           return (
+                <View style={styles.button} key={item.id}>
+                <Button onPress={this.onButtonPress(item)} title={item.date}/>
+                <Button onPress={this.removeMonth(item.id)} title='Remove'/>
+                </View>
+           );
+       });
+    }
+    
     render () {
         return (
             <ScrollView style={styles.container}>
                 <Text style={styles.item}>
-                    {this.state.newDate}
+                    Monthes List
                 </Text>
-                <NewMonthForm getNewDate={this.getNewDate}/>
-                <Button onPress={this.onButtonPress} title='Add New Month'/>
+                <NewMonthForm  addNew = {this.props.addMonth}/>
                 {this.renderList()}
             </ScrollView>
         )
@@ -41,6 +54,9 @@ const styles = {
     item: {
         padding: 20,
         textAlign: 'center'
+    },
+    button: {
+        marginBottom: 10
     }
 };
 
@@ -48,4 +64,5 @@ const mapStateToProps = ({monthes}) => ({
     monthes
 });
 
-export default connect(mapStateToProps)(MonthList);
+
+export default connect(mapStateToProps, {addMonth, removeMonth})(MonthList);

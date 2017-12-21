@@ -1,1 +1,5 @@
 export const ADD_MONTH = 'ADD_MONTH';
+export const ADD_NEW_LINE_IN_BUDGET = 'ADD_NEW_LINE_IN_BUDGET';
+export const REMOVE_MONTH_BUDGET_ITEM = 'REMOVE_MONTH_BUDGET_ITEM';
+export const REMOVE_MONTH = 'REMOVE_MONTH';
+// export const GET_MONTH = 'GET_MONTH';

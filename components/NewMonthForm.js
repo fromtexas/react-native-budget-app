@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, Button, Dimensions } from 'react-native';
 import DatePicker from 'react-native-datepicker';
+import uuid from 'uuid/v1';
 
 const SCREEN_WIDTH = Dimensions.get('window').width - 20;
 const now = new Date();
@@ -12,10 +13,13 @@ class NewMonthForm extends Component {
     state = {
         date: ''
     }
+    onButtonPress = () => {
+        const {date} = this.state;
+        const id = uuid();
+        this.props.addNew(date, id);
+    }
     componentDidMount () {
-        this.setState({date: `${yyyy}-${mm}-${dd}`}, () => {
-            this.props.getNewDate(this.state.date);
-        });
+        this.setState({date: `${yyyy}-${mm}-${dd}`});
     }
     render () {
         return (
@@ -38,10 +42,9 @@ class NewMonthForm extends Component {
                         marginLeft: 0
                     },
                     }}
-                    onDateChange={(date) => {this.setState({date: date}, () => {
-                        this.props.getNewDate(this.state.date);
-                    })}}
+                    onDateChange={(date) => {this.setState({date: date})}}
                 />
+                <Button onPress={this.onButtonPress} title='Add New Month'/>
             </View>
         );
     }
