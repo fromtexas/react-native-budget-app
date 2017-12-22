@@ -3,16 +3,19 @@ import { connect } from 'react-redux';
 import { Text, ScrollView, View, Button } from 'react-native';
 import NewMonthForm from '../components/NewMonthForm';
 import {addMonth, removeMonth} from '../actions/monthActions';
+import {counts} from '../utils';
+import MonthListItem from '../components/MonthListItem';
 
 class MonthList extends Component {
     static navigationOptions = {
         tabBarLabel: 'Home',
     }
 
-    onButtonPress = (item) => {
-        if(item.budget.length){
-            return () => this.props.navigation.navigate('month', {item});
-        }
+    showList = (item) => {
+        return () => this.props.navigation.navigate('month', {item});
+    }
+
+    addMore = (item) => {
         return () => this.props.navigation.navigate('form', {item});
     }
 
@@ -24,11 +27,16 @@ class MonthList extends Component {
     
     renderList = () => {
        return this.props.monthes.map(item => {
+           let countsItem = counts(item.budget);
            return (
-                <View style={styles.button} key={item.id}>
-                <Button onPress={this.onButtonPress(item)} title={item.date}/>
-                <Button onPress={this.removeMonth(item.id)} title='Remove'/>
-                </View>
+               <MonthListItem
+                    key={item.id}
+                    remove={this.removeMonth(item.id)}
+                    showList={this.showList (item)}
+                    addMore={this.addMore(item)}
+                    {...countsItem}
+                    date={item.date}
+                />
            );
        });
     }

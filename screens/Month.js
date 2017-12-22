@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, ScrollView } from 'react-native';
 import {connect} from 'react-redux';
 import {removeMonthBudgetItem} from '../actions/monthActions';
 
@@ -12,10 +12,17 @@ class Month extends Component {
         }  
     }
 
+    addMore = () => {
+        const item = this.props.navigation.state.params.item;
+        this.props.navigation.navigate('form', {item});
+    }
+
     renderBudget () {
         //shitty! require refactoring with find!
         const month = this.props.monthes.find(item => item.id === this.props.navigation.state.params.item.id);
-
+        if(!month){
+            return <Text>There is no month u are loooking for!GTFO</Text>
+        }
         return month.budget.map(item => {
             return (
             <View key ={item.id} >
@@ -28,9 +35,10 @@ class Month extends Component {
     }
     render () {    
         return (
-            <View>
+            <ScrollView>
                 {this.renderBudget()}
-            </View>
+                <Button onPress={this.addMore} title='Add more' /> 
+            </ScrollView>
         )
     }
 }

@@ -1,6 +1,6 @@
-import {combineReducers} from 'redux';
+// import {combineReducers} from 'redux';
 import monthes from './monthesReducer';
 
-export default combineReducers({
+export default ({
     monthes
 });
