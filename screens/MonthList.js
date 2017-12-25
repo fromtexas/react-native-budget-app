@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Text, ScrollView, View, Button } from 'react-native';
+import {ScrollView, View } from 'react-native';
 import NewMonthForm from '../components/NewMonthForm';
 import {addMonth, removeMonth} from '../actions/monthActions';
 import {counts} from '../utils';
@@ -44,9 +44,6 @@ class MonthList extends Component {
     render () {
         return (
             <ScrollView style={styles.container}>
-                <Text style={styles.item}>
-                    Monthes List
-                </Text>
                 <NewMonthForm  addNew = {this.props.addMonth}/>
                 {this.renderList()}
             </ScrollView>
@@ -56,8 +53,7 @@ class MonthList extends Component {
 
 const styles = {
     container: {
-        flex: 1,
-        padding: 10
+        flex: 1
     },
     item: {
         padding: 20,

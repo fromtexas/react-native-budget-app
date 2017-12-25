@@ -8,7 +8,7 @@ export default class MonthListItem extends Component {
     render () {
         return(
             <View>
-                <Card containerStyle={styles.cardContainer} titleStyle={styles.listItem} title={this.props.date}>
+                <Card containerStyle={styles.cardContainer} titleStyle={styles.listItem} title={'Budget for: '+this.props.date}>
                     <ListItem
                         containerStyle={styles.itemContainer}
                         titleStyle={styles.listItem}

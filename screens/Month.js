@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Text, View, Button, ScrollView } from 'react-native';
+import {View, ScrollView, Text} from 'react-native';
 import {connect} from 'react-redux';
+import {Button} from 'react-native-elements';
 import {removeMonthBudgetItem} from '../actions/monthActions';
+import MonthItem from '../components/MonthItem';
 
 
 class Month extends Component {
@@ -19,29 +21,42 @@ class Month extends Component {
 
     renderBudget () {
         //shitty! require refactoring with find!
+        if(!this.props.navigation.state.params){
+             return <Text>There is no month u are loooking for!GTFO</Text>
+        }
         const month = this.props.monthes.find(item => item.id === this.props.navigation.state.params.item.id);
         if(!month){
             return <Text>There is no month u are loooking for!GTFO</Text>
         }
         return month.budget.map(item => {
             return (
-            <View key ={item.id} >
-                <Text>{item.text}</Text>
-                <Text>{item.$}</Text>
-                <Button onPress={this.removeItem(month.id, item.id)} title='Remove'/>
-            </View>
+                <MonthItem key={item.id}  monthId={month.id} removeItem={this.removeItem} {...item} />
             );
         });
     }
     render () {    
         return (
             <ScrollView>
-                {this.renderBudget()}
-                <Button onPress={this.addMore} title='Add more' /> 
+                <View style={styles.container}>
+                    {this.renderBudget()}
+                </View>
+                
+                <Button 
+                    large
+                    buttonStyle={{backgroundColor: 'red', borderRadius: 50, marginBottom: 20}}
+                    onPress={this.addMore} 
+                    title='Add more' 
+                /> 
             </ScrollView>
         )
     }
 }
+
+const styles = {
+    container: {
+        marginBottom: 50
+    }
+};
 
 const mapStateToProps = ({monthes}) => ({
     monthes

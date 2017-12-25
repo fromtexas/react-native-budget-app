@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, Dimensions } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Icon } from 'react-native-elements';
 import DatePicker from 'react-native-datepicker';
 import uuid from 'uuid/v1';
 
@@ -27,7 +27,7 @@ class NewMonthForm extends Component {
             <View style={styles.container}>
                 <View style={styles.pickerCont}>
                     <DatePicker
-                        style={{width: 200}}
+                        style={{flex: 0.4}}
                         date={this.state.date}
                         mode="date"
                         placeholder="select date"
@@ -38,17 +38,39 @@ class NewMonthForm extends Component {
                         cancelBtnText="Cancel"
                         customStyles={{
                         dateIcon: {
-                            position: 'absolute',
-                            left: 0,
-                            top: 4,
-                            marginLeft: 0
+                            display: 'none'
                         },
+                        dateInput: {
+                            height: 65,
+                            borderWidth: 0,
+                            borderColor: '#fff',
+                          },
+                        dateTouchBody: {
+                            height: 65,
+                          },
+                        dateText: {
+                                color: '#777',
+                                fontSize: 18,
+                                fontWeight: 'bold'
+                        },
+                        datePickerCon: {
+                            backgroundColor: '#fff',
+                            height: 0,
+                            overflow: 'visible'
+                          }
+
                         }}
                         onDateChange={(date) => {this.setState({date: date})}}
                     />
+
+                    <Icon
+                        raised  
+                        onPress={this.onButtonPress} 
+                        name='calendar-plus-o'
+                        type='font-awesome'
+                        color='#f50'
+                     />
                 </View>
-                
-                <Button raised icon={{name: 'code'}} onPress={this.onButtonPress} title='Add New Month'/>
             </View>
         );
     }
@@ -57,10 +79,15 @@ class NewMonthForm extends Component {
 const styles = {
     container:{
         marginBottom: 10,
+        justifyContent: 'center',
+        flexDirection: 'column',
+        flex: 1,
+        height: 100
     },
     pickerCont: {
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'center',
+
     }
 };
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { Text, View, TextInput, Switch, Button } from 'react-native';
+import { View, TextInput, Switch,  } from 'react-native';
+import { FormLabel, FormValidationMessage, Button } from 'react-native-elements';
 import uuid from 'uuid/v1';
 import {addNewLineinMonthBudget} from '../actions/monthActions';
 
@@ -40,32 +41,42 @@ class Form extends Component {
     render () {
         return (
             <View style={styles.container}>
+                <FormLabel>Product Name</FormLabel>
                 <TextInput
                     placeholder='Some product name'
                     style={styles.input}
                     onChangeText={(text) => this.setState({text})}
                     value={this.state.text}
                 />
+                <FormLabel>Price</FormLabel>
                 <TextInput
-                    placeholder={this.state.warning || 'Numbers'}
+                    placeholder={this.state.warning || 'Only numbers'}
                     style={styles.input}
                     onChangeText={this.isNumber}
                     value={this.state.$}
                 />
+                <FormValidationMessage>{this.state.warning}</FormValidationMessage>
+                <FormLabel labelStyle={{textAlign: 'right'}}>+-</FormLabel>
                 <Switch
+                    thumbTintColor='red'
+                    onTintColor='red'
                     style={styles.input}
                     value={this.state.or}
                     onValueChange={() => this.setState({or: !this.state.or})}
                 />
-                <Button onPress={this.onButtonPress} title='Submit' />
+                <Button 
+                    large
+                    buttonStyle={{backgroundColor: 'red', borderRadius: 50}}
+                    onPress={this.onButtonPress} title='Submit'
+                />
             </View>
         )
     }
 }
 
 const styles = {
-    container: {
-        padding: 10
+    container:{
+        padding: 20
     },
     input: {
         height: 50,
