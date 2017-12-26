@@ -5,6 +5,7 @@ import NewMonthForm from '../components/NewMonthForm';
 import {addMonth, removeMonth} from '../actions/monthActions';
 import {counts} from '../utils';
 import MonthListItem from '../components/MonthListItem';
+import ListItemRound from '../components/ListItemRound';
 
 class MonthList extends Component {
     static navigationOptions = {
@@ -44,6 +45,7 @@ class MonthList extends Component {
     render () {
         return (
             <ScrollView style={styles.container}>
+                <ListItemRound/>
                 <NewMonthForm  addNew = {this.props.addMonth}/>
                 {this.renderList()}
             </ScrollView>

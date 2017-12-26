@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, Platform, StatusBar } from 'react-native';
 import {Provider} from 'react-redux';
+import { Font } from 'expo';
 import {TabNavigator, StackNavigator} from 'react-navigation';
 import {Header} from 'react-native-elements';
 import store from './store';
