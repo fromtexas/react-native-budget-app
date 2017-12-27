@@ -30,7 +30,7 @@ class MonthList extends Component {
        return this.props.monthes.map(item => {
            let countsItem = counts(item.budget);
            return (
-               <MonthListItem
+               <ListItemRound
                     key={item.id}
                     remove={this.removeMonth(item.id)}
                     showList={this.showList (item)}
@@ -44,8 +44,7 @@ class MonthList extends Component {
     
     render () {
         return (
-            <ScrollView style={styles.container}>
-                <ListItemRound/>
+            <ScrollView >
                 <NewMonthForm  addNew = {this.props.addMonth}/>
                 {this.renderList()}
             </ScrollView>
@@ -56,13 +55,6 @@ class MonthList extends Component {
 const styles = {
     container: {
         flex: 1
-    },
-    item: {
-        padding: 20,
-        textAlign: 'center'
-    },
-    button: {
-        marginBottom: 10
     }
 };
 
