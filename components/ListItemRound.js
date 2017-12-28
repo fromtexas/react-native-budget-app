@@ -7,7 +7,6 @@ import {
     Animated,
     Dimensions,
     } from 'react-native';
-import { LinearGradient } from 'expo';
 import {counts} from '../utils';
 import { Font } from 'expo';
 
@@ -16,7 +15,8 @@ const SCREEN_WIDTH = Dimensions.get('window').width;
 class ListItemRound extends Component {
     state = {
         fontLoaded: false,
-        moved: false
+        moved: false,
+        scale: new Animated.Value(0)
     }
 
     componentWillMount () {
@@ -25,12 +25,19 @@ class ListItemRound extends Component {
 
     moveLeft = () => {
         const {moved} = this.state;
-        Animated.spring(this.position, {
-            toValue: {
-              x: moved ? 0 : -180,
-              y: 0
-            }
-          }).start();
+
+            Animated.spring(this.position, {
+                toValue: {
+                  x: moved ? 0 : -180,
+                  y: 0
+                }
+              }).start();
+
+            Animated.spring(this.state.scale, {
+                toValue: moved ? 0 : 1,
+                duration: 800,
+            }).start();
+
         this.setState({moved: !moved});
     }
 
@@ -44,6 +51,8 @@ class ListItemRound extends Component {
       }
 
     render () {
+
+        
         const renderText = () => {
            if (this.state.fontLoaded){
                return (
@@ -78,6 +87,7 @@ class ListItemRound extends Component {
                         onPress={this.moveLeft}
                     />
                 </View>
+                <Animated.View style={{transform: [{scale: this.state.scale}]}}>
                 <Icon
                     size={30}
                     containerStyle={styles.iconBehind}
@@ -86,14 +96,17 @@ class ListItemRound extends Component {
                     color='#fff'
                     onPress={this.props.showList}
                 />
+                </Animated.View>
+                <Animated.View style={{transform: [{scale: this.state.scale}]}}>
                 <Icon
                     size={30}
-                    containerStyle={styles.iconBehind}
+                    containerStyle={[styles.iconBehind]}
                     name='times'
                     type='font-awesome'
                     color='#fff'
                     onPress={this.props.remove}
-                />   
+                /> 
+                </Animated.View>  
             </Animated.View>
         );
     }

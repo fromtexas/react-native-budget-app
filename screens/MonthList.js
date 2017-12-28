@@ -4,8 +4,8 @@ import {ScrollView, View } from 'react-native';
 import NewMonthForm from '../components/NewMonthForm';
 import {addMonth, removeMonth} from '../actions/monthActions';
 import {counts} from '../utils';
-import MonthListItem from '../components/MonthListItem';
 import ListItemRound from '../components/ListItemRound';
+import AddNewMonthBtn from '../components/AddNewMonthBtn';
 
 class MonthList extends Component {
     static navigationOptions = {
@@ -44,10 +44,13 @@ class MonthList extends Component {
     
     render () {
         return (
-            <ScrollView >
-                <NewMonthForm  addNew = {this.props.addMonth}/>
-                {this.renderList()}
-            </ScrollView>
+            <View style={{flex: 1, position: 'relative'}}>
+                <ScrollView >
+                    <NewMonthForm  addNew = {this.props.addMonth}/>
+                    {this.renderList()}
+                </ScrollView>
+                <AddNewMonthBtn/>
+            </View>
         )
     }
 }
