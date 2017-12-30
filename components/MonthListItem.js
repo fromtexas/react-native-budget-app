@@ -12,21 +12,21 @@ export default class MonthListItem extends Component {
                     <ListItem
                         containerStyle={styles.itemContainer}
                         titleStyle={styles.listItem}
-                        leftIcon={{name: 'plus', type:'font-awesome', color:'#f50'}}
+                        leftIcon={{name: 'plus', type:'font-awesome', color:'#ff6666'}}
                         hideChevron
                         title={'Incomes: ' + this.props.incomes + ' $'}
                     />
                     <ListItem
                         containerStyle={styles.itemContainer}
                         titleStyle={styles.listItem}
-                        leftIcon={{name: 'minus', type:'font-awesome', color:'#f50'}}
+                        leftIcon={{name: 'minus', type:'font-awesome', color:'#ff6666'}}
                         hideChevron
                         title={'Costs: ' + this.props.costs + ' $'}
                     />
                     <ListItem
                         containerStyle={styles.itemContainer}
                         titleStyle={styles.listItem}
-                        leftIcon={{name: 'check', type:'font-awesome', color:'#f50'}}
+                        leftIcon={{name: 'check', type:'font-awesome', color:'#ff6666'}}
                         hideChevron
                         title={'Profit: ' + this.props.profit + ' $'}
                     />
@@ -35,21 +35,21 @@ export default class MonthListItem extends Component {
                             raised
                             name='plus'
                             type='font-awesome'
-                            color='#f50'
+                            color='#ff6666'
                             onPress={this.props.addMore}
                         />
                         <Icon
                             raised
                             name='list-ul'
                             type='font-awesome'
-                            color='#f50'
+                            color='#ff6666'
                             onPress={this.props.showList}
                         />
                         <Icon
                             raised
                             name='close'
                             type='font-awesome'
-                            color='#f50'
+                            color='#ff6666'
                             onPress={this.props.remove}
                         />
                     </View>

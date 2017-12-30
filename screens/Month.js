@@ -43,7 +43,7 @@ class Month extends Component {
                 
                 <Button 
                     large
-                    buttonStyle={{backgroundColor: 'red', borderRadius: 50, marginBottom: 20}}
+                    buttonStyle={{backgroundColor: '#ff6666', borderRadius: 50, marginBottom: 20}}
                     onPress={this.addMore} 
                     title='Add more' 
                 /> 

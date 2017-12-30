@@ -7,7 +7,7 @@ export default class MonthItem extends Component {
         const icon = this.props.or ? 'plus' : 'minus';
         return (
             <ListItem
-                leftIcon={{name: icon, type:'font-awesome', color:'#f50'}}
+                leftIcon={{name: icon, type:'font-awesome', color:'#ff6666'}}
                 hideChevron
                 title={this.props.text}
                 subtitle={this.props.$ + ' $'}
@@ -15,7 +15,7 @@ export default class MonthItem extends Component {
                     raised
                     name='close'
                     type='font-awesome'
-                    color='#f50'
+                    color='#ff6666'
                     onPress={this.props.removeItem(this.props.monthId, this.props.id)}
                 /> }}
             />
