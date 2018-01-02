@@ -117,10 +117,11 @@ const styles = {
         flexDirection: 'row',
         height: 80,
         marginTop: 10,
-        marginBottom: 10
+        marginBottom: 10,
+        paddingLeft: 5
     },
    container: {
-       width: SCREEN_WIDTH - 20,
+       width: SCREEN_WIDTH - 10,
        borderRadius: 50,
        backgroundColor: '#f1f1f1',
        flexDirection: 'row',
