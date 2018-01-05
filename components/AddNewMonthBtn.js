@@ -1,27 +1,37 @@
 import React, {Component} from 'react';
 import {Icon} from 'react-native-elements';
+import uuid from 'uuid/v1';
 import {
     View, 
     Animated,
     Text,
-    Dimensions
+    Dimensions,
+    TouchableOpacity
     } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const now = new Date();
+const yyyy = now.getFullYear();
 
 export default class AddNewMonthBtn extends Component{
     state = {
         width: new Animated.Value(70),
-        height: new Animated.Value(70),
+        height: new Animated.Value(75),
+        opacity: new Animated.Value(0),
         visible: false
     }
     renderMonths = () => {
-        return MONTHS.map(item => <Text onPress={this.add} style={styles.text} key={item}>{item.toUpperCase()}</Text>);
+        return MONTHS.map(item => <TouchableOpacity key={item} onPress={this.add(item)}><Text style={styles.text}>{item.toUpperCase()}</Text></TouchableOpacity>);
     }
-    add = () => {
-        console.log('yeah');
+    add = (item) => {
+        return () => {
+            const id = uuid();
+            const date = `${item}, ${yyyy}`;
+            this.props.addNew(date, id);
+            this.addMonth();
+        }
     }
     addMonth = () => {
         const {visible} = this.state;
@@ -32,9 +42,13 @@ export default class AddNewMonthBtn extends Component{
                 duration: 300,
             }),
             Animated.timing(this.state.height, {
-                toValue: visible ? 70 : SCREEN_HEIGHT,
+                toValue: visible ? 75 : SCREEN_HEIGHT,
                 duration: 300,
-            })
+            }),
+            Animated.spring(this.state.opacity, {
+                toValue: visible ? 0 : 1,
+                duration: 100,
+            })  
         ]).start();
 
         this.setState({visible: !visible});
@@ -42,17 +56,17 @@ export default class AddNewMonthBtn extends Component{
     render () {
         return (
         <Animated.View style={[styles.menuScale, {width: this.state.width, height: this.state.height}]}>
-            <Animated.View style={[styles.menuMonths, {display: this.state.visible ? 'flex' : 'none'}]}>
+            <Animated.View style={[styles.menuMonths, {display: this.state.visible ? 'flex' : 'none', opacity: this.state.opacity}]}>
                 {this.renderMonths()}
             </Animated.View>
-            <Icon
-                size={30}
-                containerStyle={[styles.iconAddBtn]}
-                name='calendar-plus-o'
-                type='font-awesome'
-                color='#fff'
-                onPress={this.addMonth}
-            />
+                <Icon
+                    size={30}
+                    containerStyle={[styles.iconAddBtn]}
+                    name={this.state.visible ? 'times' : 'calendar-plus-o'}
+                    type='font-awesome'
+                    color='#fff'
+                    onPress={this.addMonth}
+                />
         </Animated.View>
         );
     }
@@ -62,11 +76,11 @@ const styles = {
     iconAddBtn:{
         zIndex: 102,
         position: 'absolute',
-        height: 70,
+        height: 75,
         width: 70,
-        bottom: 0,
+        top: 0,
         right: 0,
-        backgroundColor: '#ff9999',
+        backgroundColor: '#ff6666',
     },
     menuMonths: {
         zIndex: 101,
@@ -75,11 +89,11 @@ const styles = {
     },
     menuScale: {
         zIndex: 99,
-        backgroundColor: '#ff9999',
+        backgroundColor: '#ff6666',
         position: 'absolute',
-        bottom: 0,
+        top: 0,
         right: 0,
-        height: 70,
+        height: 75,
         width: 70,
     },
     text: {

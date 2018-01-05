@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {Button} from 'react-native-elements';
 import {removeMonthBudgetItem} from '../actions/monthActions';
 import MonthItem from '../components/MonthItem';
+import Header from '../components/Header';
 
 
 class Month extends Component {
@@ -37,6 +38,7 @@ class Month extends Component {
     render () {    
         return (
             <ScrollView>
+                <Header title={this.props.navigation.state.params.item.date} />
                 <View style={styles.container}>
                     {this.renderBudget()}
                 </View>

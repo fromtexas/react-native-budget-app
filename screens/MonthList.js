@@ -6,6 +6,7 @@ import {addMonth, removeMonth} from '../actions/monthActions';
 import {counts} from '../utils';
 import ListItemRound from '../components/ListItemRound';
 import AddNewMonthBtn from '../components/AddNewMonthBtn';
+import Header from '../components/Header';
 
 class MonthList extends Component {
     static navigationOptions = {
@@ -45,11 +46,12 @@ class MonthList extends Component {
     render () {
         return (
             <View style={{flex: 1, position: 'relative'}}>
+                
                 <ScrollView >
-                    <NewMonthForm  addNew = {this.props.addMonth}/>
+                <Header title='Month List'/>
                     {this.renderList()}
                 </ScrollView>
-                <AddNewMonthBtn/>
+                <AddNewMonthBtn addNew = {this.props.addMonth}/>
             </View>
         )
     }

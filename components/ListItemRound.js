@@ -58,8 +58,8 @@ class ListItemRound extends Component {
                return (
                 <View style={styles.textContainer}>
                     <Text style={{ fontFamily: 'lato-reg', fontSize: 20, color: '#555' }}>{this.props.date}</Text>
-                    <Text style={{ fontFamily: 'lato-light', fontSize: 16, color: '#555' }}>{this.props.incomes}</Text>
-                    <Text style={{ fontFamily: 'lato-light', fontSize: 16, color: '#e03e3e'}}>{this.props.costs}</Text>
+                    <Text style={{ fontFamily: 'lato-light', fontSize: 16, color: '#555' }}>{'Incomes: $' + this.props.incomes}</Text>
+                    <Text style={{ fontFamily: 'lato-light', fontSize: 16, color: '#e03e3e'}}>{'Costs: $' + this.props.costs}</Text>
                 </View>
                );
             } 
