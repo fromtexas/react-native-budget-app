@@ -4,6 +4,7 @@ import { View, TextInput, Switch, Animated } from 'react-native';
 import { FormLabel, FormValidationMessage, Button, Icon } from 'react-native-elements';
 import uuid from 'uuid/v1';
 import {addNewLineinMonthBudget} from '../actions/monthActions';
+import BackBtn from '../components/BackBtn';
 
 class Form extends Component {
     state = {
@@ -51,6 +52,10 @@ class Form extends Component {
             $
         });
     }
+    back = () => {
+        const {item} = this.props.navigation.state.params;
+        this.props.navigation.navigate('month', {item});
+    }
     render () {
         return (
             <View style={styles.container}>
@@ -94,6 +99,7 @@ class Form extends Component {
                         color='#fff'
                         onPress={this.onButtonPress} 
                     />
+                    <BackBtn style={{marginLeft: 10}} back={this.back}/>
                 </View>
             
             </View>

@@ -17,7 +17,6 @@ export default class App extends React.Component {
   render() {
     const MainNavigator = TabNavigator({
       monthlist: { screen: MonthList },
-      chart: {screen: Chart},
       form: {screen: Form},
       month: {screen: Month}
     },{

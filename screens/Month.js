@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import {View, ScrollView, Text} from 'react-native';
 import {connect} from 'react-redux';
-import {Button} from 'react-native-elements';
+import {Icon} from 'react-native-elements';
 import {removeMonthBudgetItem} from '../actions/monthActions';
-import MonthItem from '../components/MonthItem';
+import MonthItemRound from '../components/MonthItemRound';
 import Header from '../components/Header';
+import BackBtn from '../components/BackBtn';
 
 
 class Month extends Component {
@@ -20,6 +21,10 @@ class Month extends Component {
         this.props.navigation.navigate('form', {item});
     }
 
+    back = () => {
+        this.props.navigation.navigate('monthlist');
+    }
+
     renderBudget () {
         //shitty! require refactoring with find!
         if(!this.props.navigation.state.params){
@@ -31,7 +36,7 @@ class Month extends Component {
         }
         return month.budget.map(item => {
             return (
-                <MonthItem key={item.id}  monthId={month.id} removeItem={this.removeItem} {...item} />
+                <MonthItemRound key={item.id}  monthId={month.id} removeItem={this.removeItem} {...item} />
             );
         });
     }
@@ -42,13 +47,17 @@ class Month extends Component {
                 <View style={styles.container}>
                     {this.renderBudget()}
                 </View>
-                
-                <Button 
-                    large
-                    buttonStyle={{backgroundColor: '#ff6666', borderRadius: 50, marginBottom: 20}}
-                    onPress={this.addMore} 
-                    title='Add more' 
-                /> 
+                <View style={styles.buttonContainer}>
+                    <BackBtn back={this.back}/>
+                    <Icon
+                        size={30}
+                        containerStyle={styles.addMore}
+                        name='plus'
+                        type='font-awesome'
+                        color='#fff'
+                        onPress={this.addMore} 
+                    />  
+                </View>
             </ScrollView>
         )
     }
@@ -57,6 +66,19 @@ class Month extends Component {
 const styles = {
     container: {
         marginBottom: 50
+    },
+    addMore: {
+        borderRadius: 50,
+        height: 80,
+        width: 80,
+        backgroundColor: '#ff6666',
+        marginRight: 5,
+        marginLeft: 10
+    },
+    buttonContainer: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'flex-end',
     }
 };
 
