@@ -6,6 +6,7 @@ import {removeMonthBudgetItem} from '../actions/monthActions';
 import MonthItemRound from '../components/MonthItemRound';
 import Header from '../components/Header';
 import BackBtn from '../components/BackBtn';
+import Budjet from '../components/Budjet';
 
 
 class Month extends Component {
@@ -24,9 +25,7 @@ class Month extends Component {
     back = () => {
         this.props.navigation.navigate('monthlist');
     }
-
     renderBudget () {
-        //shitty! require refactoring with find!
         if(!this.props.navigation.state.params){
              return <Text>There is no month u are loooking for!GTFO</Text>
         }
@@ -34,19 +33,15 @@ class Month extends Component {
         if(!month){
             return <Text>There is no month u are loooking for!GTFO</Text>
         }
-        return month.budget.map(item => {
-            return (
-                <MonthItemRound key={item.id}  monthId={month.id} removeItem={this.removeItem} {...item} />
-            );
-        });
+        return <Budjet removeItem={this.removeItem} month={month} />;
     }
     render () {    
         return (
             <ScrollView>
                 <Header title={this.props.navigation.state.params.item.date} />
-                <View style={styles.container}>
+ 
                     {this.renderBudget()}
-                </View>
+
                 <View style={styles.buttonContainer}>
                     <BackBtn back={this.back}/>
                     <Icon
@@ -64,9 +59,6 @@ class Month extends Component {
 }
 
 const styles = {
-    container: {
-        marginBottom: 50
-    },
     addMore: {
         borderRadius: 50,
         height: 80,
@@ -79,6 +71,7 @@ const styles = {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'flex-end',
+        marginBottom: 50
     }
 };
 

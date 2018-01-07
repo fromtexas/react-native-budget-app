@@ -6,7 +6,6 @@ import {TabNavigator, StackNavigator} from 'react-navigation';
 import {Header} from 'react-native-elements';
 import store from './store';
 import MonthList from './screens/MonthList';
-import Chart from './screens/Chart';
 import Month from './screens/Month';
 import Form from './screens/Form';
 

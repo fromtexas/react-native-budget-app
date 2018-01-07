@@ -5,7 +5,7 @@ import { FormLabel, FormValidationMessage, Button, Icon } from 'react-native-ele
 import uuid from 'uuid/v1';
 import {addNewLineinMonthBudget} from '../actions/monthActions';
 import BackBtn from '../components/BackBtn';
-
+//switch component and input
 class Form extends Component {
     state = {
         switch: new Animated.ValueXY(0,0),

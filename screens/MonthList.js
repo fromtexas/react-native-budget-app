@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {ScrollView, View } from 'react-native';
-import NewMonthForm from '../components/NewMonthForm';
 import {addMonth, removeMonth} from '../actions/monthActions';
 import {counts} from '../utils';
 import ListItemRound from '../components/ListItemRound';

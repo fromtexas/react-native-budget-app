@@ -41,29 +41,9 @@ class ListItemRound extends Component {
         this.setState({moved: !moved});
     }
 
-    async componentDidMount() {
-        await Font.loadAsync({
-          'lato-reg': require('../assets/fonts/Lato-Regular.ttf'),
-          'lato-light': require('../assets/fonts/Lato-Light.ttf'),
-        });
-    
-        this.setState({ fontLoaded: true });
-      }
 
     render () {
 
-        
-        const renderText = () => {
-           if (this.state.fontLoaded){
-               return (
-                <View style={styles.textContainer}>
-                    <Text style={{ fontFamily: 'lato-reg', fontSize: 20, color: '#555' }}>{this.props.date}</Text>
-                    <Text style={{ fontFamily: 'lato-light', fontSize: 16, color: '#555' }}>{'Incomes: $' + this.props.incomes}</Text>
-                    <Text style={{ fontFamily: 'lato-light', fontSize: 16, color: '#e03e3e'}}>{'Costs: $' + this.props.costs}</Text>
-                </View>
-               );
-            } 
-        };
         return(
             <Animated.View style={[this.position.getLayout(), styles.wrap]}>
                 <View style={styles.container}>
@@ -76,7 +56,11 @@ class ListItemRound extends Component {
                         onPress={this.props.addMore}
                     />
                     
-                        {renderText()}     
+                    <View style={styles.textContainer}>
+                        <Text style={{ fontSize: 20, color: '#555' }}>{this.props.date}</Text>
+                        <Text style={{ fontSize: 16, color: '#555' }}>{'Incomes: $' + this.props.incomes}</Text>
+                        <Text style={{ fontSize: 16, color: '#e03e3e'}}>{'Costs: $' + this.props.costs}</Text>
+                    </View>     
                     
                     <Icon
                         size={30}
