@@ -7,8 +7,7 @@ import {
     Animated,
     Dimensions,
     } from 'react-native';
-import {counts} from '../utils';
-import { Font } from 'expo';
+
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -59,7 +58,7 @@ class ListItemRound extends Component {
                     <View style={styles.textContainer}>
                         <Text style={{ fontSize: 20, color: '#555' }}>{this.props.date}</Text>
                         <Text style={{ fontSize: 16, color: '#555' }}>{'Incomes: $' + this.props.incomes}</Text>
-                        <Text style={{ fontSize: 16, color: '#e03e3e'}}>{'Costs: $' + this.props.costs}</Text>
+                        <Text style={{ fontSize: 16, color: '#e03e3e'}}>{ `Costs: $${this.props.costs}/${this.props.percent}%`}</Text>
                     </View>     
                     
                     <Icon

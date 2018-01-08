@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {ScrollView, View } from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {addMonth, removeMonth} from '../actions/monthActions';
 import {counts} from '../utils';
 import ListItemRound from '../components/ListItemRound';
@@ -45,7 +45,6 @@ class MonthList extends Component {
     render () {
         return (
             <View style={{flex: 1, position: 'relative'}}>
-                
                 <ScrollView >
                 <Header title='Month List'/>
                     {this.renderList()}

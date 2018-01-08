@@ -39,9 +39,7 @@ class Month extends Component {
         return (
             <ScrollView>
                 <Header title={this.props.navigation.state.params.item.date} />
- 
                     {this.renderBudget()}
-
                 <View style={styles.buttonContainer}>
                     <BackBtn back={this.back}/>
                     <Icon

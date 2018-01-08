@@ -43,7 +43,7 @@ export default class AddNewMonthBtn extends Component{
             }),
             Animated.timing(this.state.height, {
                 toValue: visible ? 75 : SCREEN_HEIGHT,
-                duration: 300,
+                duration: 200,
             }),
             Animated.spring(this.state.opacity, {
                 toValue: visible ? 0 : 1,

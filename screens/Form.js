@@ -1,31 +1,21 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { View, TextInput, Switch, Animated } from 'react-native';
+import { View, TextInput, } from 'react-native';
 import { FormLabel, FormValidationMessage, Button, Icon } from 'react-native-elements';
 import uuid from 'uuid/v1';
 import {addNewLineinMonthBudget} from '../actions/monthActions';
 import BackBtn from '../components/BackBtn';
-//switch component and input
+import Switch from '../components/Switch';
+import FormInput from '../components/FormInput';
+
 class Form extends Component {
     state = {
-        switch: new Animated.ValueXY(0,0),
         text: '',
         $: '',
         or: true,
         warning: ''
     }
-    onSwitch = () => {
-        const {or} = this.state;
 
-        Animated.spring(this.state.switch, {
-            toValue: {
-              x: or ? 80 : 0,
-              y: 0
-            }
-        }).start();
-
-        this.setState({or: !or});
-    }
     onButtonPress = () => {
         if(!this.state.text || !this.state.$){
             return this.setState({warning: 'Both fields are requered!'})
@@ -43,6 +33,9 @@ class Form extends Component {
             $: ''
         });
     }
+    change = () => {
+        this.setState({or: !this.state.or});
+    }
     isNumber = ($) => {
 
         if(isNaN($)){
@@ -59,38 +52,20 @@ class Form extends Component {
     render () {
         return (
             <View style={styles.container}>
-                <View style={styles.inputWrap}>
-                <TextInput
-                    underlineColorAndroid='transparent'
+                
+                <FormInput
                     placeholder='Some product name'
-                    style={styles.input}
                     onChangeText={(text) => this.setState({text})}
                     value={this.state.text}
                 />
-                </View>
-                <View style={styles.inputWrap}>
-                <TextInput
-                    underlineColorAndroid='transparent'
+                <FormInput
                     placeholder={this.state.warning || 'Only numbers'}
-                    style={styles.input}
                     onChangeText={this.isNumber}
                     value={this.state.$}
                 />
-                </View>
 
                 <View style={styles.buttonsRow}>
-                    <View style={styles.swithContainer}>
-                        <Animated.View style={this.state.switch.getLayout()}>
-                        <Icon 
-                            size={30}
-                            containerStyle={styles.iconSwitch}
-                            name={this.state.or ? 'plus' : 'minus'}
-                            type='font-awesome'
-                            color='#fff'
-                            onPress={this.onSwitch}
-                        />
-                        </Animated.View>
-                    </View>
+                    <Switch change={this.change} or={this.state.or}/>
                     <Icon
                         size={30}
                         containerStyle={styles.iconSwitch}
@@ -109,36 +84,14 @@ class Form extends Component {
 
 const styles = {
     container:{
+        padding: 5,
         paddingTop: 20
-    },
-    input: {
-        height: 50,
-        fontSize: 18
-        
-    },
-    inputWrap: {
-        height: 80,
-        backgroundColor: '#f1f1f1',
-        borderRadius: 50,
-        paddingLeft: 20,
-        paddingRight: 20,
-        justifyContent: 'center',
-        marginBottom: 20
     },
     iconSwitch: {
         borderRadius: 50,
         height: 80,
         width: 80,
         backgroundColor: '#ff6666', 
-    },
-    swithContainer: {
-        borderRadius: 50,
-        height: 80,
-        width: 160,
-        marginBottom: 20,
-        backgroundColor: '#f1f1f1',
-        overflow: 'visible',
-        marginRight: 10
     },
     buttonsRow: {
         flexDirection: 'row'
