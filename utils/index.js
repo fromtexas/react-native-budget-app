@@ -22,3 +22,4 @@ export const counts = (arr) => {
         percent: percent >= 0 ? percent : 0
     };
 };
+

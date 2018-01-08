@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { View, TextInput, } from 'react-native';
-import { FormLabel, FormValidationMessage, Button, Icon } from 'react-native-elements';
+import { View } from 'react-native';
+import { Icon } from 'react-native-elements';
 import uuid from 'uuid/v1';
 import {addNewLineinMonthBudget} from '../actions/monthActions';
 import BackBtn from '../components/BackBtn';

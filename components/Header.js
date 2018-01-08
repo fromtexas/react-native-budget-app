@@ -17,7 +17,7 @@ const styles = {
         elevation: 3,
         justifyContent: 'center',
         backgroundColor: '#fdfdfd',
-        marginBottom: 50,
+        marginBottom: 25,
     },
     text: {
         paddingLeft: 50,

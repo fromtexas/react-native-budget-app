@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, View, Text} from 'react-native';
 import {addMonth, removeMonth} from '../actions/monthActions';
 import {counts} from '../utils';
 import ListItemRound from '../components/ListItemRound';
@@ -27,6 +27,9 @@ class MonthList extends Component {
     }
     
     renderList = () => {
+        if (!this.props.monthes.length){
+            return <Text style={{color: '#999', fontSize: 22, textAlign: 'center', marginTop: 150, opacity: 0.7}}>Add month and your costs</Text>;
+        }
        return this.props.monthes.map(item => {
            let countsItem = counts(item.budget);
            return (
@@ -46,7 +49,7 @@ class MonthList extends Component {
         return (
             <View style={{flex: 1, position: 'relative'}}>
                 <ScrollView >
-                <Header title='Month List'/>
+                <Header title='Months'/>
                     {this.renderList()}
                 </ScrollView>
                 <AddNewMonthBtn addNew = {this.props.addMonth}/>
@@ -55,11 +58,7 @@ class MonthList extends Component {
     }
 }
 
-const styles = {
-    container: {
-        flex: 1
-    }
-};
+
 
 const mapStateToProps = ({monthes}) => ({
     monthes

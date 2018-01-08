@@ -26,6 +26,6 @@ export default ({month, removeItem}) => {
 
 const styles = {
     container: {
-        marginBottom: 50
+        marginBottom: 15
     }
 };

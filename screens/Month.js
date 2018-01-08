@@ -69,7 +69,7 @@ const styles = {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'flex-end',
-        marginBottom: 50
+        marginBottom: 25
     }
 };
 
