@@ -3,7 +3,7 @@ React Native budget app
 
 > Budget app with React Native, Redux, Expo  -> [Preview](https://expo.io/@fromtexas/budgety)
 
-![budgetapp](https://image.ibb.co/f6aMz6/budgety_preview.png)
+![budgetapp](https://image.ibb.co/c1Rknx/budgety.png)
 
 ## Requirements
 You need [Expo](https://expo.io/) pre-installed and you’re good to go. 
