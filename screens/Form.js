@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {connect} from 'react-redux';
 import { View } from 'react-native';
 import { Icon } from 'react-native-elements';
@@ -8,7 +8,7 @@ import BackBtn from '../components/BackBtn';
 import Switch from '../components/Switch';
 import FormInput from '../components/FormInput';
 
-class Form extends Component {
+class Form extends PureComponent {
     state = {
         text: '',
         $: '',

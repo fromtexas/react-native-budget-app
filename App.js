@@ -1,9 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, Platform, StatusBar } from 'react-native';
+import { StyleSheet, View} from 'react-native';
 import {Provider} from 'react-redux';
-import { Font } from 'expo';
-import {TabNavigator, StackNavigator} from 'react-navigation';
-import {Header} from 'react-native-elements';
+import {TabNavigator} from 'react-navigation';
 import store from './store';
 import MonthList from './screens/MonthList';
 import Month from './screens/Month';
@@ -11,7 +9,7 @@ import Form from './screens/Form';
 
 
 
-export default class App extends React.Component {
+export default class App extends React.PureComponent {
 
   render() {
     const MainNavigator = TabNavigator({

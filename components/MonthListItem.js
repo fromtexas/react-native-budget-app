@@ -1,9 +1,8 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import { Card, ListItem, Icon } from 'react-native-elements';
 import {View} from 'react-native';
-import {counts} from '../utils';
 
-export default class MonthListItem extends Component {
+export default class MonthListItem extends PureComponent {
 
     render () {
         return(

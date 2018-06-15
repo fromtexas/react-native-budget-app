@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {Icon} from 'react-native-elements';
 import {
     View, 
-    TouchableHighlight, 
     Text, 
     Animated,
     Dimensions,
@@ -11,7 +10,7 @@ import {
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
-class ListItemRound extends Component {
+class ListItemRound extends PureComponent {
     state = {
         fontLoaded: false,
         moved: false,

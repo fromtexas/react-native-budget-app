@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import {ScrollView, View, Text} from 'react-native';
 import {addMonth, removeMonth} from '../actions/monthActions';
@@ -7,7 +7,7 @@ import ListItemRound from '../components/ListItemRound';
 import AddNewMonthBtn from '../components/AddNewMonthBtn';
 import Header from '../components/Header';
 
-class MonthList extends Component {
+class MonthList extends PureComponent {
     static navigationOptions = {
         tabBarLabel: 'Home',
     }

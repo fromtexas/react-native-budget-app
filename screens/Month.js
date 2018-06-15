@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {View, ScrollView, Text} from 'react-native';
 import {connect} from 'react-redux';
 import {Icon} from 'react-native-elements';
 import {removeMonthBudgetItem} from '../actions/monthActions';
-import MonthItemRound from '../components/MonthItemRound';
 import Header from '../components/Header';
 import BackBtn from '../components/BackBtn';
 import Budjet from '../components/Budjet';
 
 
-class Month extends Component {
+class Month extends PureComponent {
 
     removeItem = (id, itemId) => {
         return () => {

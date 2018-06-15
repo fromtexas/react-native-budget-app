@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {View, TextInput} from 'react-native';
 
 export default ({onChangeText, value, placeholder}) => {

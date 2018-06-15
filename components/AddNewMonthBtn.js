@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {Icon} from 'react-native-elements';
 import uuid from 'uuid/v1';
 import {
-    View, 
     Animated,
     Text,
     Dimensions,
@@ -15,7 +14,7 @@ const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 const now = new Date();
 const yyyy = now.getFullYear();
 
-export default class AddNewMonthBtn extends Component{
+export default class AddNewMonthBtn extends PureComponent{
     state = {
         width: new Animated.Value(70),
         height: new Animated.Value(75),

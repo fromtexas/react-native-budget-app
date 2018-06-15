@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 import {View, Animated} from 'react-native';
 import {Icon} from 'react-native-elements';
 
-export default class Switch extends Component {
+export default class Switch extends PureComponent {
     state = {
         switch: new Animated.ValueXY(0,0)
     }
