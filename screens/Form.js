@@ -39,7 +39,7 @@ class Form extends PureComponent {
     isNumber = ($) => {
 
         if(isNaN($)){
-            return this.setState({warning: 'This input accept only numbers!'});
+            return this.setState({warning: 'This input accepts only numbers!'});
         }
         this.setState({
             $

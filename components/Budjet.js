@@ -16,9 +16,9 @@ export default ({month, removeItem}) => {
 
     return (
         <View style={styles.container}>
-                {incomes.length ? <Text style={{fontSize: 20, color: '#777', marginLeft: 50, fontWeight: 'bold', marginBottom: 10}}>Incomes:</Text> : null} 
+                {incomes.length ? <Text style={styles.txt}>Incomes:</Text> : null} 
                 {incomes}
-                {costs.length ? <Text style={{fontSize: 20, color: '#777', marginLeft: 50, fontWeight: 'bold', marginBottom: 10}}>Costs:</Text> : null} 
+                {costs.length ? <Text style={styles.txt}>Costs:</Text> : null} 
                 {costs}
         </View>
     );
@@ -27,5 +27,12 @@ export default ({month, removeItem}) => {
 const styles = {
     container: {
         marginBottom: 15
+    },
+    txt: {
+        fontSize: 20, 
+        color: '#777', 
+        marginLeft: 50, 
+        fontWeight: 'bold', 
+        marginBottom: 10
     }
 };
