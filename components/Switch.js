@@ -7,7 +7,6 @@ export default class Switch extends PureComponent {
         switch: new Animated.ValueXY(0,0)
     }
     onSwitch = () => {
-
         Animated.spring(this.state.switch, {
             toValue: {
               x: this.props.or ? 80 : 0,

@@ -11,8 +11,7 @@ import {
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-const now = new Date();
-const yyyy = now.getFullYear();
+const yyyy = new Date().getFullYear();
 
 export default class AddNewMonthBtn extends PureComponent{
     state = {
