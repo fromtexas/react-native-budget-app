@@ -1,5 +1,5 @@
-import monthes from './monthesReducer';
+import monthes from "./monthesReducer";
 
-export default ({
-    monthes
-});
+export default {
+  monthes
+};
