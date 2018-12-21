@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 export default class Header extends PureComponent {
   render() {
@@ -11,7 +11,7 @@ export default class Header extends PureComponent {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     height: 75,
     elevation: 3,
@@ -25,4 +25,4 @@ const styles = {
     fontSize: 22,
     fontWeight: "bold"
   }
-};
+});

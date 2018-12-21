@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { Card, ListItem, Icon } from "react-native-elements";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 export default class MonthListItem extends PureComponent {
   render() {
@@ -61,7 +61,7 @@ export default class MonthListItem extends PureComponent {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   iconsContainer: {
     marginTop: 15,
     flexDirection: "row",
@@ -74,4 +74,4 @@ const styles = {
   itemContainer: {
     borderBottomColor: "#fff"
   }
-};
+});

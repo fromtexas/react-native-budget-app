@@ -1,7 +1,7 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, StatusBar } from "react-native";
 import { Provider } from "react-redux";
-import { TabNavigator } from "react-navigation";
+import { TabNavigator, SafeAreaView } from "react-navigation";
 import store from "./store";
 import MonthList from "./screens/MonthList";
 import Month from "./screens/Month";
@@ -26,9 +26,9 @@ export default class App extends React.PureComponent {
     );
     return (
       <Provider store={store}>
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
           <MainNavigator />
-        </View>
+        </SafeAreaView>
       </Provider>
     );
   }
@@ -37,6 +37,6 @@ export default class App extends React.PureComponent {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 0
+    paddingTop: StatusBar.currentHeight ? StatusBar.currentHeight : 0
   }
 });

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Icon } from "react-native-elements";
-import { View, Text, Dimensions } from "react-native";
+import { View, Text, Dimensions, StyleSheet } from "react-native";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
@@ -33,7 +33,7 @@ export default class MonthItemRound extends Component {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   iconLeft: {
     borderRadius: 50,
     width: 80
@@ -63,4 +63,4 @@ const styles = {
     fontSize: 16,
     color: "#555"
   }
-};
+});

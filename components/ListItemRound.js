@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { Icon } from "react-native-elements";
-import { View, Text, Animated, Dimensions } from "react-native";
+import { View, Text, Animated, Dimensions, StyleSheet } from "react-native";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
@@ -92,7 +92,7 @@ class ListItemRound extends PureComponent {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   wrap: {
     flexDirection: "row",
     height: 80,
@@ -129,6 +129,6 @@ const styles = {
     width: 80,
     backgroundColor: "#ff6666"
   }
-};
+});
 
 export default ListItemRound;

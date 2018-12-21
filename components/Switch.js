@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { View, Animated } from "react-native";
+import { View, Animated, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 
 export default class Switch extends PureComponent {
@@ -34,7 +34,7 @@ export default class Switch extends PureComponent {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   iconSwitch: {
     borderRadius: 50,
     height: 80,
@@ -50,4 +50,4 @@ const styles = {
     overflow: "visible",
     marginRight: 10
   }
-};
+});

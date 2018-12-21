@@ -1,5 +1,5 @@
 import React from "react";
-import { View, TextInput } from "react-native";
+import { View, TextInput, StyleSheet } from "react-native";
 
 export default ({ onChangeText, value, placeholder }) => {
   return (
@@ -15,7 +15,7 @@ export default ({ onChangeText, value, placeholder }) => {
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   input: {
     height: 50,
     fontSize: 18
@@ -29,4 +29,4 @@ const styles = {
     justifyContent: "center",
     marginBottom: 20
   }
-};
+});

@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { View, ScrollView, Text } from "react-native";
+import { View, ScrollView, Text, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { Icon } from "react-native-elements";
 import { removeMonthBudgetItem } from "../actions/monthActions";
@@ -55,7 +55,7 @@ class Month extends PureComponent {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   addMore: {
     borderRadius: 50,
     height: 80,
@@ -70,7 +70,7 @@ const styles = {
     justifyContent: "flex-end",
     marginBottom: 25
   }
-};
+});
 
 const mapStateToProps = ({ monthes }) => ({
   monthes

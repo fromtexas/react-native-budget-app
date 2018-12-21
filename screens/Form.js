@@ -1,6 +1,6 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 import uuid from "uuid/v1";
 import { addNewLineinMonthBudget } from "../actions/monthActions";
@@ -79,7 +79,7 @@ class Form extends PureComponent {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     padding: 5,
     paddingTop: 20
@@ -93,6 +93,6 @@ const styles = {
   buttonsRow: {
     flexDirection: "row"
   }
-};
+});
 
 export default connect()(Form);

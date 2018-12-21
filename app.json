@@ -4,7 +4,7 @@
     "description": "This project is fun and usefull (no).",
     "slug": "budgety",
     "privacy": "public",
-    "sdkVersion": "24.0.0",
+    "sdkVersion": "31.0.0",
     "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,11 +14,12 @@
       "resizeMode": "contain",
       "backgroundColor": "#ff6666"
     },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
-    },
-    "androidStatusBar": {
-      "backgroundColor": "#FF6666"
     }
   }
 }

@@ -1,7 +1,13 @@
 import React, { PureComponent } from "react";
 import { Icon } from "react-native-elements";
 import uuid from "uuid/v1";
-import { Animated, Text, Dimensions, TouchableOpacity } from "react-native";
+import {
+  Animated,
+  Text,
+  Dimensions,
+  TouchableOpacity,
+  StyleSheet
+} from "react-native";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 const SCREEN_HEIGHT = Dimensions.get("window").height;
@@ -95,7 +101,7 @@ export default class AddNewMonthBtn extends PureComponent {
   }
 }
 
-const styles = {
+const styles = StyleSheet.create({
   iconAddBtn: {
     zIndex: 102,
     position: "absolute",
@@ -126,4 +132,4 @@ const styles = {
     marginBottom: 10,
     marginLeft: 30
   }
-};
+});

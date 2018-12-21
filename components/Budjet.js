@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import MonthItemRound from "../components/MonthItemRound";
 
 export default ({ month, removeItem }) => {
@@ -38,7 +38,7 @@ export default ({ month, removeItem }) => {
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   container: {
     marginBottom: 15
   },
@@ -49,4 +49,4 @@ const styles = {
     fontWeight: "bold",
     marginBottom: 10
   }
-};
+});
