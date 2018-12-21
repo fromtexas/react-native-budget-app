@@ -1,31 +1,8 @@
 import React, { PureComponent } from "react";
 import { Icon } from "react-native-elements";
 import uuid from "uuid/v1";
-import {
-  Animated,
-  Text,
-  Dimensions,
-  TouchableOpacity,
-  StyleSheet
-} from "react-native";
-
-const SCREEN_WIDTH = Dimensions.get("window").width;
-const SCREEN_HEIGHT = Dimensions.get("window").height;
-const MONTHS = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December"
-];
-const yyyy = new Date().getFullYear();
+import { Animated, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { SCREEN_HEIGHT, SCREEN_WIDTH, MONTHS, yyyy } from "../constants";
 
 export default class AddNewMonthBtn extends PureComponent {
   state = {
@@ -34,6 +11,7 @@ export default class AddNewMonthBtn extends PureComponent {
     opacity: new Animated.Value(0),
     visible: false
   };
+
   renderMonths = () => {
     return MONTHS.map(item => (
       <TouchableOpacity key={item} onPress={this.add(item)}>
@@ -41,6 +19,7 @@ export default class AddNewMonthBtn extends PureComponent {
       </TouchableOpacity>
     ));
   };
+
   add = item => {
     return () => {
       const id = uuid();
@@ -49,6 +28,7 @@ export default class AddNewMonthBtn extends PureComponent {
       this.addMonth();
     };
   };
+
   addMonth = () => {
     const { visible } = this.state;
 
@@ -69,6 +49,7 @@ export default class AddNewMonthBtn extends PureComponent {
 
     this.setState({ visible: !visible });
   };
+
   render() {
     return (
       <Animated.View

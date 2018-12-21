@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Icon } from "react-native-elements";
-import { View, Text, Dimensions, StyleSheet } from "react-native";
-
-const SCREEN_WIDTH = Dimensions.get("window").width;
+import { View, Text, StyleSheet } from "react-native";
+import { SCREEN_WIDTH } from "../constants";
 
 export default class MonthItemRound extends Component {
   render() {

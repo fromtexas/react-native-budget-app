@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { View, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
+import PropTypes from "prop-types";
 import uuid from "uuid/v1";
 import { addNewLineinMonthBudget } from "../actions/monthActions";
 import BackBtn from "../components/BackBtn";
@@ -27,15 +28,17 @@ class Form extends PureComponent {
       or: this.state.or
     };
     const id = this.props.navigation.state.params.item.id;
-    this.props.dispatch(addNewLineinMonthBudget(id, payload));
+    this.props.addNewLineinMonthBudget(id, payload);
     this.setState({
       text: "",
       $: ""
     });
   };
+
   change = () => {
     this.setState({ or: !this.state.or });
   };
+
   isNumber = $ => {
     if (isNaN($)) {
       return this.setState({ warning: "This input accepts only numbers!" });
@@ -44,10 +47,12 @@ class Form extends PureComponent {
       $
     });
   };
+
   back = () => {
     const { item } = this.props.navigation.state.params;
     this.props.navigation.navigate("month", { item });
   };
+
   render() {
     return (
       <View style={styles.container}>
@@ -79,6 +84,11 @@ class Form extends PureComponent {
   }
 }
 
+Form.propTypes = {
+  navigation: PropTypes.object,
+  addNewLineinMonthBudget: PropTypes.func
+};
+
 const styles = StyleSheet.create({
   container: {
     padding: 5,
@@ -95,4 +105,7 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect()(Form);
+export default connect(
+  null,
+  { addNewLineinMonthBudget }
+)(Form);

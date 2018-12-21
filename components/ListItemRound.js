@@ -1,8 +1,7 @@
 import React, { PureComponent } from "react";
 import { Icon } from "react-native-elements";
-import { View, Text, Animated, Dimensions, StyleSheet } from "react-native";
-
-const SCREEN_WIDTH = Dimensions.get("window").width;
+import { View, Text, Animated, StyleSheet } from "react-native";
+import { SCREEN_WIDTH } from "../constants";
 
 class ListItemRound extends PureComponent {
   state = {

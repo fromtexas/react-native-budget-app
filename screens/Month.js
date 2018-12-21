@@ -22,6 +22,7 @@ class Month extends PureComponent {
   back = () => {
     this.props.navigation.navigate("monthlist");
   };
+
   renderBudget() {
     if (!this.props.navigation.state.params) {
       return <Text>There is no month u are loooking for!GTFO</Text>;
@@ -34,6 +35,7 @@ class Month extends PureComponent {
     }
     return <Budjet removeItem={this.removeItem} month={month} />;
   }
+
   render() {
     return (
       <ScrollView>
