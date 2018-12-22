@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { View, ScrollView, Text, StyleSheet } from "react-native";
 import { connect } from "react-redux";
 import { Icon } from "react-native-elements";
+import PropTypes from "prop-types";
 import { removeMonthBudgetItem } from "../actions/monthActions";
 import Header from "../components/Header";
 import BackBtn from "../components/BackBtn";
@@ -73,6 +74,12 @@ const styles = StyleSheet.create({
     marginBottom: 25
   }
 });
+
+Month.propTypes = {
+  monthes: PropTypes.array,
+  removeMonthBudgetItem: PropTypes.func,
+  navigation: PropTypes.object
+};
 
 const mapStateToProps = ({ monthes }) => ({
   monthes

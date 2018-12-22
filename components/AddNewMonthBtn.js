@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { Icon } from "react-native-elements";
 import uuid from "uuid/v1";
+import PropTypes from "prop-types";
 import { Animated, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { SCREEN_HEIGHT, SCREEN_WIDTH, MONTHS, yyyy } from "../constants";
 
@@ -81,6 +82,10 @@ export default class AddNewMonthBtn extends PureComponent {
     );
   }
 }
+
+AddNewMonthBtn.propTypes = {
+  addNew: PropTypes.func
+};
 
 const styles = StyleSheet.create({
   iconAddBtn: {

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Icon } from "react-native-elements";
 import { View, Text, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 import { SCREEN_WIDTH } from "../constants";
 
 export default class MonthItemRound extends Component {
@@ -31,6 +32,15 @@ export default class MonthItemRound extends Component {
     );
   }
 }
+
+MonthItemRound.propTypes = {
+  removeItem: PropTypes.func,
+  monthId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  $: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  or: PropTypes.bool
+};
 
 const styles = StyleSheet.create({
   iconLeft: {

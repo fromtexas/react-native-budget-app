@@ -1,8 +1,9 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
+import PropTypes from "prop-types";
 
-export default props => {
+export default function BackBtn(props) {
   return (
     <Icon
       size={30}
@@ -13,6 +14,11 @@ export default props => {
       onPress={props.back}
     />
   );
+}
+
+BackBtn.propTypes = {
+  style: PropTypes.object,
+  back: PropTypes.func
 };
 
 const styles = StyleSheet.create({

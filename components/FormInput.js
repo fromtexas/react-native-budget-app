@@ -1,7 +1,8 @@
 import React from "react";
 import { View, TextInput, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
-export default ({ onChangeText, value, placeholder }) => {
+export default function FormInput({ onChangeText, value, placeholder }) {
   return (
     <View style={styles.inputWrap}>
       <TextInput
@@ -13,6 +14,12 @@ export default ({ onChangeText, value, placeholder }) => {
       />
     </View>
   );
+}
+
+FormInput.propTypes = {
+  onChangeText: PropTypes.func,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  placeholder: PropTypes.string
 };
 
 const styles = StyleSheet.create({

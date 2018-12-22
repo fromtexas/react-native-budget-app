@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 export default class Header extends PureComponent {
   render() {
@@ -10,6 +11,10 @@ export default class Header extends PureComponent {
     );
   }
 }
+
+Header.propTypes = {
+  title: PropTypes.string
+};
 
 const styles = StyleSheet.create({
   container: {

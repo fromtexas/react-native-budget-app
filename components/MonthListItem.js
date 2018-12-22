@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { Card, ListItem, Icon } from "react-native-elements";
 import { View, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 
 export default class MonthListItem extends PureComponent {
   render() {
@@ -60,6 +61,12 @@ export default class MonthListItem extends PureComponent {
     );
   }
 }
+
+MonthListItem.propTypes = {
+  addMore: PropTypes.func,
+  showList: PropTypes.func,
+  remove: PropTypes.func
+};
 
 const styles = StyleSheet.create({
   iconsContainer: {

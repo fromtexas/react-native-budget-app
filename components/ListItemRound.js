@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { Icon } from "react-native-elements";
 import { View, Text, Animated, StyleSheet } from "react-native";
+import PropTypes from "prop-types";
 import { SCREEN_WIDTH } from "../constants";
 
 class ListItemRound extends PureComponent {
@@ -90,6 +91,15 @@ class ListItemRound extends PureComponent {
     );
   }
 }
+
+ListItemRound.propTypes = {
+  remove: PropTypes.func,
+  showList: PropTypes.func,
+  addMore: PropTypes.func,
+  incomes: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  const: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  percent: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+};
 
 const styles = StyleSheet.create({
   wrap: {

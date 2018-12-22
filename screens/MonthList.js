@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { ScrollView, View, Text } from "react-native";
+import PropTypes from "prop-types";
 import { addMonth, removeMonth } from "../actions/monthActions";
 import { counts } from "../utils";
 import ListItemRound from "../components/ListItemRound";
@@ -69,6 +70,12 @@ class MonthList extends PureComponent {
     );
   }
 }
+
+MonthList.propTypes = {
+  monthes: PropTypes.array,
+  removeMonth: PropTypes.func,
+  addMonth: PropTypes.func
+};
 
 const mapStateToProps = ({ monthes }) => ({
   monthes

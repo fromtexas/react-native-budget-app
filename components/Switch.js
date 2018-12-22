@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { View, Animated, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
+import PropTypes from "prop-types";
 
 export default class Switch extends PureComponent {
   state = {
@@ -33,6 +34,11 @@ export default class Switch extends PureComponent {
     );
   }
 }
+
+Switch.propTypes = {
+  or: PropTypes.bool,
+  change: PropTypes.func
+};
 
 const styles = StyleSheet.create({
   iconSwitch: {
